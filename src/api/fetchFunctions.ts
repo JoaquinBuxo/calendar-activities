@@ -1,4 +1,4 @@
-import { Offers } from "../types";
+import { Offers } from "../common/types";
 import { offerUrl } from "../config";
 
 export const basicFetch = async <returnType>(

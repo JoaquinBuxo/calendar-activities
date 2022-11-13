@@ -27,3 +27,8 @@ export type Offers = {
   previous: string;
   results: Offer[];
 };
+
+export type OffersDay = {
+  day: string;
+  offers: Offer[];
+};

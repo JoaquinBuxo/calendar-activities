@@ -1,13 +1,16 @@
 import React from "react";
-import DayContainer from "./DayContainer";
+import { Offer } from "../common/types";
+import { useState, useEffect } from "react";
+// functions api
 import { fetchOffersByCompany } from "../api/fetchFunctions";
-import { Offer } from "../types";
-import { useState } from "react";
-import { useEffect } from "react";
+// helpers
+import { groupBy } from "../common/helpers";
+// components
+import DayContainer from "./DayContainer";
 import Spinner from "./Spinner";
 
 const CalendarContainer = () => {
-  const [offers, setOffers] = useState<Offer[]>();
+  const [offersDay, setOffersDay] = useState<[string, Offer[]][]>();
   const [spinner, setSpinner] = useState(false);
 
   const getOffers = async () => {
@@ -16,11 +19,19 @@ const CalendarContainer = () => {
     setSpinner(true);
     const offers = await fetchOffersByCompany(companyId, numOffersPage);
     setSpinner(false);
-    setOffers(offers);
+    return offers;
+  };
+
+  const getData = async () => {
+    const offers = await getOffers();
+    const offersByDay = groupBy(offers, (offer) =>
+      offer.date_start.slice(0, 10)
+    );
+    setOffersDay(Object.entries(offersByDay));
   };
 
   useEffect(() => {
-    getOffers();
+    getData();
   }, []);
 
   return (
@@ -30,12 +41,14 @@ const CalendarContainer = () => {
       {spinner ? (
         <Spinner></Spinner>
       ) : (
-        offers?.map((offer) => {
-          return <p key={offer.id}>{offer.id}</p>;
-        })
+        <div>
+          {offersDay?.map((day) => {
+            return <p key={day[0]}>{day[0]}</p>;
+          })}
+        </div>
       )}
     </div>
   );
-};
+};;
 
 export default CalendarContainer;
