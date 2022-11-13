@@ -37,13 +37,18 @@ const CalendarContainer = () => {
   return (
     <div className="calendar">
       Calendar
-      <DayContainer />
       {spinner ? (
         <Spinner></Spinner>
       ) : (
         <div>
-          {offersDay?.map((day) => {
-            return <p key={day[0]}>{day[0]}</p>;
+          {offersDay?.map((dayInfo) => {
+            return (
+              <DayContainer
+                key={dayInfo[0]}
+                day={dayInfo[0]}
+                offers={dayInfo[1]}
+              />
+            );
           })}
         </div>
       )}
