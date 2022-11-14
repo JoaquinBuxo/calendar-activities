@@ -17,10 +17,11 @@ export const basicFetch = async <returnType>(
 
 export const fetchOffersByCompany = async (
   companyId = 6,
-  numOffersPage = 10
+  numOffersPage = 10,
+  numPage = 1
 ) => {
   const offers = await basicFetch<Offers>(
-    `${offerUrl}&company=${companyId}&page_size=${numOffersPage}&page=2`
+    `${offerUrl}&company=${companyId}&page_size=${numOffersPage}&page=${numPage}`
   );
   return offers.results;
 };

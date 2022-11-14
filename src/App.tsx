@@ -3,7 +3,6 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import CalendarContainer from "./components/CalendarContainer";
 import ModalReservation from "./components/ModalReservation";
-import Paginator from "./components/Paginator";
 
 import "./App.css";
 
@@ -11,7 +10,6 @@ const App = () => {
   return (
     <div className="App">
       <Navbar />
-      <Paginator />
       <CalendarContainer />
       <ModalReservation />
     </div>
