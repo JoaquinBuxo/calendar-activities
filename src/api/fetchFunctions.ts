@@ -1,5 +1,5 @@
 import { Activity, Offers } from "../common/types";
-import { activityUrl, offerUrl } from "../config";
+import { activityUrl, coachUrl, offerUrl } from "../config";
 
 export const basicFetch = async <returnType>(
   urlEndpoint: string
@@ -29,4 +29,9 @@ export const fetchOffersByCompany = async (
 export const getActivity = async (activityId: number) => {
   const activityData = await basicFetch<Activity>(`${activityUrl(activityId)}`);
   return activityData;
+};
+
+export const getCoach = async (coachId: number) => {
+  const coachData = await basicFetch<Activity>(`${coachUrl(coachId)}`);
+  return coachData;
 };

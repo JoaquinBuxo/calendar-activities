@@ -14,3 +14,20 @@ export const groupBy = <T, K extends keyof any>(
     previous[group].push(currentItem);
     return previous;
   }, {} as Record<K, T[]>);
+
+/** TODO, not finished
+ * Return array data by id fetching url
+ * @param arrayData array with the IDs
+ * @param fetchDataById Function to fetch the data by id
+ * @param idWord key word to select the id data that we want
+ * @return array with all the data requested by data id
+ */
+export const getDataByID = (arrayData: [], fetchDataById: Function, idWord: string) => {
+  let newDataArray: any[] = [];
+  arrayData.map((element) => {
+    fetchDataById((element as any)[idWord]).then((newDataElement: any) => {
+      newDataArray = [...newDataArray, newDataElement];
+    });
+  });
+  return newDataArray;
+};
