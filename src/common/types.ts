@@ -27,3 +27,22 @@ export type Offers = {
   previous: string;
   results: Offer[];
 };
+
+export type Activity = {
+  id: number;
+  color: string;
+  company: number;
+  establishments: [];
+  images: [];
+  name: string;
+  rating: string;
+  description: string;
+};
+
+export type Activities = {
+  count: number;
+  next: string;
+  next_page: number;
+  previous: string;
+  results: Activity[];
+};
