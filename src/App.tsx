@@ -11,9 +11,9 @@ const App = () => {
   return (
     <div className="App">
       <Navbar />
+      <Paginator />
       <CalendarContainer />
       <ModalReservation />
-      <Paginator />
     </div>
   );
 };

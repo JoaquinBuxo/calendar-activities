@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { getActivity } from "../api/fetchFunctions";
 import { Offer, Activity } from "../common/types";
+// bootstrap components
+import {ListGroup} from 'react-bootstrap';
 
 type Props = {
   day: string;
@@ -29,12 +31,12 @@ const DayContainer = ({ day, offers }: Props) => {
   }, []);
 
   return (
-    <div className="day">
+    <ListGroup.Item className="day">
       <h2>{date.toDateString()}</h2>
       {activities.map((activity) => (
         <p key={activity.id}>{activity.name}</p>
       ))}
-    </div>
+    </ListGroup.Item>
   );
 };
 

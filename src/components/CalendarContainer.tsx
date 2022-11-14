@@ -8,6 +8,8 @@ import { groupBy } from "../common/helpers";
 // components
 import DayContainer from "./DayContainer";
 import Spinner from "./Spinner";
+// bootstrap components
+import {ListGroup, Container} from 'react-bootstrap';
 
 const CalendarContainer = () => {
   const [offersDay, setOffersDay] = useState<[string, Offer[]][]>();
@@ -36,22 +38,23 @@ const CalendarContainer = () => {
 
   return (
     <div className="calendar">
-      Calendar
-      {spinner ? (
-        <Spinner></Spinner>
-      ) : (
-        <div>
-          {offersDay?.map((dayInfo) => {
-            return (
-              <DayContainer
-                key={dayInfo[0]}
-                day={dayInfo[0]}
-                offers={dayInfo[1]}
-              />
-            );
-          })}
-        </div>
-      )}
+      <Container className="d-flex justify-content-center">
+        {spinner ? (
+          <Spinner></Spinner>
+        ) : (
+          <ListGroup className="col-md-12">
+            {offersDay?.map((dayInfo) => {
+              return (
+                <DayContainer
+                  key={dayInfo[0]}
+                  day={dayInfo[0]}
+                  offers={dayInfo[1]}
+                />
+              );
+            })}
+          </ListGroup>
+        )}
+      </Container>
     </div>
   );
 };;
