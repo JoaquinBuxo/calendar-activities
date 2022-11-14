@@ -1,5 +1,5 @@
-import { Activities, Activity, Offers } from "../common/types";
-import { activitiesUrl, activityUrl, offerUrl } from "../config";
+import { Activity, Offers } from "../common/types";
+import { activityUrl, offerUrl } from "../config";
 
 export const basicFetch = async <returnType>(
   urlEndpoint: string

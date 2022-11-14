@@ -1,7 +1,14 @@
 import React from "react";
+import { Navbar as NavbarBootstrap, Container } from "react-bootstrap";
 
 const Navbar = () => {
-  return <div className="navbar">Navbar</div>;
+  return (
+    <NavbarBootstrap bg="dark" variant="dark">
+      <Container>
+        <NavbarBootstrap.Brand>SPORT CALENDAR</NavbarBootstrap.Brand>
+      </Container>
+    </NavbarBootstrap>
+  );
 };
 
 export default Navbar;
